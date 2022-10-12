@@ -64,4 +64,12 @@ public class Sample21Controller {
     return "sample21.html";
 
   }
+
+  @PostMapping("/sample25")
+  public String sample25(@RequestParam Integer kakeru1, @RequestParam Integer kakeru2, ModelMap model) {
+    int kakeruResult = kakeru1 * kakeru2;
+    model.addAttribute("kakeruResult", kakeruResult);
+    return "sample24.html";
+  }
+
 }
