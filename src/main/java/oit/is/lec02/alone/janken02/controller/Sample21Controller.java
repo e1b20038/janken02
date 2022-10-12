@@ -22,7 +22,7 @@ public class Sample21Controller {
   public String sample24() {
     return "sample24.html";
   }
-  
+
   /**
    * パスパラメータ2つをGETで受け付ける 1つ目の変数をparam1という名前で，2つ目の変数をparam2という名前で受け取る
    * GETで受け取った2つの変数とsample22()の引数の名前が同じなため， 引数の前に @PathVariable と付けるだけで，パスパラメータの値を
@@ -62,6 +62,21 @@ public class Sample21Controller {
     int tasuResult = tasu1 + tasu2;
     model.addAttribute("tasuResult2", tasuResult);
     return "sample21.html";
+  }
 
+  /**
+   * POSTを受け付ける場合は@PostMappingを利用する /sample25へのPOSTを受け付けて，FormParamで指定された変数(input
+   * name)をsample25()メソッドの引数として受け取ることができる
+   *
+   * @param kakeru1
+   * @param kakeru2
+   * @param model
+   * @return
+   */
+  @PostMapping("/sample25")
+  public String sample25(@RequestParam Integer kakeru1, @RequestParam Integer kakeru2, ModelMap model) {
+    int kakeruResult = kakeru1 * kakeru2;
+    model.addAttribute("kakeruResult", kakeruResult);
+    return "sample24.html";
   }
 }
