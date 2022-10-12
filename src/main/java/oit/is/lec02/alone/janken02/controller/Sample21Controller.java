@@ -17,6 +17,7 @@ public class Sample21Controller {
   public String sample21() {
     return "sample21.html";
   }
+
   /**
    * パスパラメータ2つをGETで受け付ける 1つ目の変数をparam1という名前で，2つ目の変数をparam2という名前で受け取る
    * GETで受け取った2つの変数とsample22()の引数の名前が同じなため， 引数の前に @PathVariable と付けるだけで，パスパラメータの値を
@@ -37,6 +38,24 @@ public class Sample21Controller {
     // ModelMap型変数のmodelにtasuResult1という名前の変数で，tasuResultの値を登録する．
     // ここで値を登録するとthymeleafが受け取り，htmlで処理することができるようになる
     model.addAttribute("tasuResult1", tasuResult);
+    return "sample21.html";
+
+  }
+
+  /**
+   * クエリパラメータの引数2つを受け付ける URLでの?のあとのパラメータ名とjavaメソッドの引数名は同じであることが望ましい(別にする方法は一応ある)
+   * 引数をStringとして受け取ってparseIntする以外にもInteger(intのラッパークラス)クラスの変数として受け取ってそのまま加算する方法もある
+   *
+   * @param tasu1
+   * @param tasu2
+   * @param model
+   * @return
+   */
+
+  @GetMapping("/sample23")
+  public String sample23(@RequestParam Integer tasu1, @RequestParam Integer tasu2, ModelMap model) {
+    int tasuResult = tasu1 + tasu2;
+    model.addAttribute("tasuResult2", tasuResult);
     return "sample21.html";
 
   }
