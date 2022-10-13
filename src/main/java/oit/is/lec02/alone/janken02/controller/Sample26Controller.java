@@ -1,4 +1,4 @@
-package oit.is.lec02.alone.janken02;
+package oit.is.lec02.alone.janken02.controller;
 
 import java.util.ArrayList;
 
@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import ch.qos.logback.classic.net.SocketReceiver;
+
+import oit.is.lec02.alone.janken02.model.Score;
 
 /**
  * @RequestMapping("/sample26")をクラスの前につけると，このクラスのすべてのメソッドは/sample26で呼び出されることを表す
@@ -39,5 +43,20 @@ public class Sample26Controller {
     model.addAttribute("sumRange", sumRange);
     model.addAttribute("sum", sum);
     return "sample26.html";
+  }
+
+  @PostMapping("/ave")
+  public String sample28(@RequestParam Double num1, @RequestParam Double num2, @RequestParam Double num3,
+      ModelMap model) {
+    ArrayList<Double> numlist = new ArrayList<>();
+    numlist.add(num1);
+    numlist.add(num2);
+    numlist.add(num3);
+    Score score = new Score(numlist);
+
+    model.addAttribute("score", score);
+
+    return "sample26.html";
+
   }
 }
