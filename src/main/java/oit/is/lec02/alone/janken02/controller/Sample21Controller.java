@@ -1,4 +1,4 @@
-package oit.is.lec02.alone.janken02;
+package oit.is.lec02.alone.janken02.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
